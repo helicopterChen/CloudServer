@@ -14,11 +14,7 @@ handlers.AddEmailToPlayer = function (args) {
         PlayFabId :currentPlayerId,
 	    "Data": 
 	    {
-		    "Emails":
-		    [
-		    	{"X":"T1"},
-		    	{"Z":"T2"}
-		    ]
+		    "Emails":"-----------------"
 		}
     };
     server.UpdateUserData(request);  
