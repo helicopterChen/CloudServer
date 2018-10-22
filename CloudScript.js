@@ -9,12 +9,17 @@ handlers.TestScript = function (args) {
 
 
 handlers.AddEmailToPlayer = function (args) {
+	var test=[
+		{ID:1,Name:"email_1"},
+		{ID:2,Name:"email_2"},
+		{ID:3,Name:"email_3"},
+	];
 	var request = 
     {
         PlayFabId :currentPlayerId,
 	    "Data": 
 	    {
-		    "Emails":"-----------------"
+		    "Emails":JSON.stringify(test)
 		}
     };
     return server.UpdateUserData(request);  
