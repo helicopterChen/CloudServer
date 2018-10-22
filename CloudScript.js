@@ -17,5 +17,5 @@ handlers.AddEmailToPlayer = function (args) {
 		    "Emails":"-----------------"
 		}
     };
-    server.UpdateUserData(request);  
+    return server.UpdateUserData(request);  
 };
