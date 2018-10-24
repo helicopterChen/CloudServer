@@ -33,5 +33,5 @@ handlers.PlayerReadMail = function(args) {
             "emails"
         ]
     };
-    return tResult
+    return tResult;
 }
