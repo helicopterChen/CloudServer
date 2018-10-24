@@ -38,7 +38,7 @@ handlers.AddEmailToPlayer = function (args) {
 		var templates = tTemplateData[idx];
 		for(index in tMailData){
 			var mail = tMailData[index];
-			if( mail.ID ~= templates.ID ){
+			if( mail.ID != templates.ID ){
 				tNewMails.push(tTemplateData);
 			}
 		};
