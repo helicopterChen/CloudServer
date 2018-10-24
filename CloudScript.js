@@ -33,7 +33,7 @@ handlers.PlayerReadMail = function(args) {
             "emails"
         ]
     };
-    var tFindElem = null;
+    var bFindElem = false;
 	var tResult = server.GetUserData( request );
 	var tData = JSON.parse(tResult.Data.emails.Value);
 	if( tData == null ){
@@ -42,19 +42,21 @@ handlers.PlayerReadMail = function(args) {
 	for(idx in tData){
 		var elem = tData[idx];
 		if(elem.ID==args.ID){
-			tFindElem = elem;
-			tData.Read = true;
+			bFindElem = true;
+			elem.Read = true;
 			break;
 		}
 	};
+	if( bFindElem != true ){
+		return;
+	}
 	var request2 = 
     {
         PlayFabId :currentPlayerId,
 	    "Data": 
 	    {
-		    "Emails":JSON.stringify(tData)
+		    "emails":JSON.stringify(tData)
 		}
     };
 	server.UpdateUserData(request2);
-    return tFindElem;
 }
