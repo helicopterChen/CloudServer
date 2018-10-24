@@ -37,8 +37,7 @@ handlers.PlayerReadMail = function(args) {
 	var tResult = server.GetUserData( request );
 	var tData = JSON.parse(tResult.Data.emails.Value);
 	if( tData != null ){
-		for(var i = 0; i < tData.Legth; ++i ){
-			var elem = tData[i];
+		for(elem in tData){
 			if(elem.ID==args.ID){
 				tFindElem = tFindElem;
 			}
