@@ -9,20 +9,37 @@ handlers.TestScript = function (args) {
 
 
 handlers.AddEmailToPlayer = function (args) {
-	var test=[
-		{ID:1,Name:"email_1"},
-		{ID:2,Name:"email_2"},
-		{ID:3,Name:"email_3"}
-	];
 	var request = 
-    {
-        PlayFabId :currentPlayerId,
-	    "Data": 
-	    {
-		    "Emails":JSON.stringify(test)
-		}
+	{
+        PlayFabId:currentPlayerId,
+        Keys:[
+            "emails"
+        ]
     };
-    return server.UpdateUserData(request);
+    var requestTitle = 
+    {
+    	Keys:[
+    		"email_templates"
+    	]
+    };
+    var tResult = server.GetUserData( request );
+    var tTemplatesResult = server.GetTitleData(requestTitle)
+	var tData = JSON.parse(tResult.Data.emails.Value);
+	var tTemplateData = JSON.parse(tTemplatesResult.Data.email_templates.Value);
+	if( tTemplateData == null ){
+		return;
+	}
+
+	// var request2 = 
+ //    {
+ //        PlayFabId :currentPlayerId,
+	//     "Data": 
+	//     {
+	// 	    "Emails":JSON.stringify(test)
+	// 	}
+ //    };
+ //    return server.UpdateUserData(request2);
+ 	return tTemplateData;
 };
 
 handlers.PlayerReadMail = function(args) {
