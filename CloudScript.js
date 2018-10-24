@@ -25,10 +25,10 @@ handlers.AddEmailToPlayer = function (args) {
     var tResult = server.GetUserData( request );
     var tTemplatesResult = server.GetTitleData(requestTitle)
 	var tData = JSON.parse(tResult.Data.emails.Value);
-	var tTemplateData = JSON.parse(tTemplatesResult.Data.email_templates.Value);
-	if( tTemplateData == null ){
-		return;
-	}
+	//var tTemplateData = JSON.parse(tTemplatesResult.Data.email_templates.Value);
+	//if( tTemplateData == null ){
+	//	return;
+	//}
 
 	// var request2 = 
  //    {
@@ -39,7 +39,7 @@ handlers.AddEmailToPlayer = function (args) {
 	// 	}
  //    };
  //    return server.UpdateUserData(request2);
- 	return tTemplateData;
+ 	return tTemplatesResult;
 };
 
 handlers.PlayerReadMail = function(args) {
