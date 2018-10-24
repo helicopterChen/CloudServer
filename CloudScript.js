@@ -60,3 +60,39 @@ handlers.PlayerReadMail = function(args) {
     };
 	server.UpdateUserData(request2);
 }
+
+handlers.PlayerGetMailReward = function(args) {
+	var request = 
+	{
+        PlayFabId:currentPlayerId,
+        Keys:[
+            "emails"
+        ]
+    };
+    var bFindElem = false;
+	var tResult = server.GetUserData( request );
+	var tData = JSON.parse(tResult.Data.emails.Value);
+	if( tData == null ){
+		return;
+	}
+	for(idx in tData){
+		var elem = tData[idx];
+		if(elem.ID==args.ID){
+			bFindElem = true;
+			elem.GetReward = true;
+			break;
+		}
+	};
+	if( bFindElem != true ){
+		return;
+	}
+	var request2 = 
+    {
+        PlayFabId :currentPlayerId,
+	    "Data": 
+	    {
+		    "emails":JSON.stringify(tData)
+		}
+    };
+	server.UpdateUserData(request2);
+}
