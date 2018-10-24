@@ -29,30 +29,31 @@ handlers.AddEmailToPlayer = function (args) {
 	if( tTemplateData == null ){
 		return;
 	}
-	var tNewMails = [];
-	for(index2 in tMailData){
-		var mail = tMailData[index2];
-		tNewMails.push(mail);
-	};
-	for(idx in tTemplateData){
-		var templates = tTemplateData[idx];
-		for(index in tMailData){
-			var mail = tMailData[index];
-			if( mail.ID != templates.ID ){
-				tNewMails.push(tTemplateData);
-				break;
-			}
-		};
-	};
-	var request2 = 
-    {
-        PlayFabId :currentPlayerId,
-	    "Data": 
-	    {
-		    "Emails":JSON.stringify(tNewMails)
-		}
-    };
-    return server.UpdateUserData(request2);
+	// var tNewMails = [];
+	// for(index2 in tMailData){
+	// 	var mail = tMailData[index2];
+	// 	tNewMails.push(mail);
+	// };
+	// for(idx in tTemplateData){
+	// 	var templates = tTemplateData[idx];
+	// 	for(index in tMailData){
+	// 		var mail = tMailData[index];
+	// 		if( mail.ID != templates.ID ){
+	// 			tNewMails.push(tTemplateData);
+	// 			break;
+	// 		}
+	// 	};
+	// };
+	// var request2 = 
+ //    {
+ //        PlayFabId :currentPlayerId,
+	//     "Data": 
+	//     {
+	// 	    "Emails":JSON.stringify(tNewMails)
+	// 	}
+ //    };
+ //    return server.UpdateUserData(request2);
+ 	return tTemplateData;
 };
 
 handlers.PlayerReadMail = function(args) {
