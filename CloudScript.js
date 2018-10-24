@@ -35,5 +35,10 @@ handlers.PlayerReadMail = function(args) {
     };
 	var tResult = server.GetUserData( request );
 	var tData = JSON.parse(tResult.Data.emails.Value);
+	if( tData != null ){
+		tData.foreach(function(value,index,array){
+			log.debug(value);
+		});
+	}
     return tData;
 }
