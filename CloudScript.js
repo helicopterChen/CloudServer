@@ -24,22 +24,34 @@ handlers.AddEmailToPlayer = function (args) {
     };
     var tResult = server.GetUserData( request );
     var tTemplatesResult = server.GetTitleData(requestTitle)
-	var tData = JSON.parse(tResult.Data.emails.Value);
-	//var tTemplateData = JSON.parse(tTemplatesResult.Data.email_templates.Value);
-	//if( tTemplateData == null ){
-	//	return;
-	//}
-
-	// var request2 = 
- //    {
- //        PlayFabId :currentPlayerId,
-	//     "Data": 
-	//     {
-	// 	    "Emails":JSON.stringify(test)
-	// 	}
- //    };
- //    return server.UpdateUserData(request2);
- 	return tTemplatesResult.Data;
+	var tMailData = JSON.parse(tResult.Data.emails.Value);
+	var tTemplateData = JSON.parse(tTemplatesResult.Data.email_templates);
+	if( tTemplateData == null ){
+		return;
+	}
+	var tNewMails = [];
+	for(index2 in tMailData){
+		var mail = tMailData[index2];
+		tNewMails.push(mail);
+	}
+	for(idx in tTemplateData){
+		var templates = tTemplateData[idx];
+		for(index in tMailData){
+			var mail = tMailData[index];
+			if( mail.ID ~= templates.ID ){
+				tNewMails.push(tTemplateData);
+			}
+		}
+	}
+	var request2 = 
+    {
+        PlayFabId :currentPlayerId,
+	    "Data": 
+	    {
+		    "Emails":JSON.stringify(tNewMails)
+		}
+    };
+    return server.UpdateUserData(request2);
 };
 
 handlers.PlayerReadMail = function(args) {
