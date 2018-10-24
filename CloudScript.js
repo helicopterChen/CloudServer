@@ -33,12 +33,14 @@ handlers.PlayerReadMail = function(args) {
             "emails"
         ]
     };
+    log.debug(args);
 	var tResult = server.GetUserData( request );
 	var tData = JSON.parse(tResult.Data.emails.Value);
 	if( tData != null ){
-		tData.foreach(function(value,index,array){
-			log.debug(value);
-		});
+		for(var i = 0; i < tData.Legth; ++i ){
+			var elem = tData[i];
+			log.debug(elem);
+		};
 	}
     return tData;
 }
