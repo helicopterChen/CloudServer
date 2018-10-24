@@ -24,3 +24,14 @@ handlers.AddEmailToPlayer = function (args) {
     };
     return server.UpdateUserData(request);
 };
+
+handlers.PlayerReadMail = function(args) {
+	var tResult = server.GetUserData(
+    {
+        PlayFabId:currentPlayerId,
+        Keys:[
+            "emails"
+        ]
+    };
+    return tResult
+}
