@@ -43,7 +43,7 @@ handlers.PlayerReadMail = function(args) {
 		var elem = tData[idx];
 		if(elem.ID==args.ID){
 			tFindElem = elem;
-			tData.Readed = true;
+			tData.Read = true;
 			break;
 		}
 	};
