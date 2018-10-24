@@ -26,12 +26,13 @@ handlers.AddEmailToPlayer = function (args) {
 };
 
 handlers.PlayerReadMail = function(args) {
-	var tResult = server.GetUserData(
-    {
+	var request = 
+	{
         PlayFabId:currentPlayerId,
         Keys:[
             "emails"
         ]
     };
+	var tResult = server.GetUserData( request );
     return tResult;
 }
