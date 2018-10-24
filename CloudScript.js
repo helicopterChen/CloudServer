@@ -33,7 +33,7 @@ handlers.AddEmailToPlayer = function (args) {
 	for(index2 in tMailData){
 		var mail = tMailData[index2];
 		tNewMails.push(mail);
-	}
+	};
 	for(idx in tTemplateData){
 		var templates = tTemplateData[idx];
 		for(index in tMailData){
@@ -41,8 +41,8 @@ handlers.AddEmailToPlayer = function (args) {
 			if( mail.ID ~= templates.ID ){
 				tNewMails.push(tTemplateData);
 			}
-		}
-	}
+		};
+	};
 	var request2 = 
     {
         PlayFabId :currentPlayerId,
