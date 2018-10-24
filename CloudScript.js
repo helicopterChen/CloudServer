@@ -34,6 +34,6 @@ handlers.PlayerReadMail = function(args) {
         ]
     };
 	var tResult = server.GetUserData( request );
-	//var tData = JSON.parse(tResult.data.Data.emails.Value);
-    return tResult.data;
+	var tData = JSON.parse(tResult.Data.emails.Value);
+    return tData;
 }
