@@ -29,11 +29,11 @@ handlers.AddEmailToPlayer = function (args) {
 	if( tTemplateData == null ){
 		return;
 	}
-	// var tNewMails = [];
-	// for(index2 in tMailData){
-	// 	var mail = tMailData[index2];
-	// 	tNewMails.push(mail);
-	// };
+	var tNewMails = [];
+	for(index2 in tMailData){
+		var mail = tMailData[index2];
+		tNewMails.push(mail);
+	};
 	// for(idx in tTemplateData){
 	// 	var templates = tTemplateData[idx];
 	// 	for(index in tMailData){
@@ -53,7 +53,7 @@ handlers.AddEmailToPlayer = function (args) {
 	// 	}
  //    };
  //    return server.UpdateUserData(request2);
- 	return tTemplateData;
+ 	return tNewMails;
 };
 
 handlers.PlayerReadMail = function(args) {
