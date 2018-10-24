@@ -36,14 +36,17 @@ handlers.AddEmailToPlayer = function (args) {
 	};
 	for(idx in tTemplateData){
 		var templates = tTemplateData[idx];
+		var bFound = false;
 		for(index in tMailData){
 			var mail = tMailData[index];
-			log.debug(mail.ID + "------" + templates.ID )
-			if( mail.ID != templates.ID ){
-				tNewMails.push(templates);
+			if( mail.ID == templates.ID ){
+				bFound = true;
 				break;
 			}
 		};
+		if(bFound != true){
+			tNewMails.push(templates);
+		}
 	};
 	var request2 = 
     {
