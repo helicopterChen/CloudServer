@@ -33,14 +33,16 @@ handlers.PlayerReadMail = function(args) {
             "emails"
         ]
     };
-    log.debug(args);
+    var tFindElem = null;
 	var tResult = server.GetUserData( request );
 	var tData = JSON.parse(tResult.Data.emails.Value);
 	if( tData != null ){
 		for(var i = 0; i < tData.Legth; ++i ){
 			var elem = tData[i];
-			log.debug(elem);
+			if(elem.ID==args.ID){
+				tFindElem = tFindElem;
+			}
 		};
 	}
-    return tData;
+    return tFindElem;
 }
