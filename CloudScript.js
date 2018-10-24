@@ -39,7 +39,7 @@ handlers.AddEmailToPlayer = function (args) {
 	// 	}
  //    };
  //    return server.UpdateUserData(request2);
- 	return tTemplatesResult;
+ 	return tTemplatesResult.Data;
 };
 
 handlers.PlayerReadMail = function(args) {
