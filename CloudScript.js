@@ -34,16 +34,16 @@ handlers.AddEmailToPlayer = function (args) {
 		var mail = tMailData[index2];
 		tNewMails.push(mail);
 	};
-	// for(idx in tTemplateData){
-	// 	var templates = tTemplateData[idx];
-	// 	for(index in tMailData){
-	// 		var mail = tMailData[index];
-	// 		if( mail.ID != templates.ID ){
-	// 			tNewMails.push(tTemplateData);
-	// 			break;
-	// 		}
-	// 	};
-	// };
+	for(idx in tTemplateData){
+		var templates = tTemplateData[idx];
+		for(index in tMailData){
+			var mail = tMailData[index];
+			if( mail.ID != templates.ID ){
+				tNewMails.push(templates);
+				break;
+			}
+		};
+	};
 	// var request2 = 
  //    {
  //        PlayFabId :currentPlayerId,
