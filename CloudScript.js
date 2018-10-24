@@ -44,16 +44,15 @@ handlers.AddEmailToPlayer = function (args) {
 			}
 		};
 	};
-	// var request2 = 
- //    {
- //        PlayFabId :currentPlayerId,
-	//     "Data": 
-	//     {
-	// 	    "Emails":JSON.stringify(tNewMails)
-	// 	}
- //    };
- //    return server.UpdateUserData(request2);
- 	return tNewMails;
+	var request2 = 
+    {
+        PlayFabId :currentPlayerId,
+	    "Data": 
+	    {
+		    "Emails":JSON.stringify(tNewMails)
+		}
+    };
+    server.UpdateUserData(request2);
 };
 
 handlers.PlayerReadMail = function(args) {
