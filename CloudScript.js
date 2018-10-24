@@ -40,6 +40,7 @@ handlers.AddEmailToPlayer = function (args) {
 			var mail = tMailData[index];
 			if( mail.ID != templates.ID ){
 				tNewMails.push(tTemplateData);
+				break;
 			}
 		};
 	};
