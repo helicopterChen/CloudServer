@@ -22,18 +22,21 @@ handlers.AddEmailToPlayer = function (args) {
     		"email_templates"
     	]
     };
-    var tResult = server.GetUserData( request );
+    var tEmailResult = server.GetUserData( request );
     var tTemplatesResult = server.GetTitleData(requestTitle)
-	var tMailData = JSON.parse(tResult.Data.emails.Value);
 	var tTemplateData = JSON.parse(tTemplatesResult.Data.email_templates);
 	if( tTemplateData == null ){
 		return;
 	}
 	var tNewMails = [];
-	for(index2 in tMailData){
-		var mail = tMailData[index2];
-		tNewMails.push(mail);
-	};
+	if(tEmailResult.Data.emails != null)
+	{
+		var tMailData = JSON.parse(tEmailResult.Data.emails.Value);
+		for(index2 in tMailData){
+			var mail = tMailData[index2];
+			tNewMails.push(mail);
+		};
+	}
 	for(idx in tTemplateData){
 		var templates = tTemplateData[idx];
 		var bFound = false;
@@ -53,7 +56,7 @@ handlers.AddEmailToPlayer = function (args) {
         PlayFabId :currentPlayerId,
 	    "Data": 
 	    {
-		    "Emails":JSON.stringify(tNewMails)
+		    "emails":JSON.stringify(tNewMails)
 		}
     };
     server.UpdateUserData(request2);
